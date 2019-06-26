@@ -15,7 +15,7 @@ class Register extends Component {
     })
   }
 
-  signUpFetch = event => {
+  signupFetch = event => {
     event.preventDefault()
     console.log(this.state.name, this.state.email, this.state.password)
 
@@ -56,7 +56,7 @@ class Register extends Component {
             <Form.Control type="password" name="password" placeholder="Password" onChange={this.user_input} value={this.state.password}/>
           </Form.Group>
 
-          <Button variant="primary" type="submit" onClick={this.signUpFetch}> Submit </Button>
+          <Button variant="primary" type="submit" onClick={this.signupFetch}> Submit </Button>
         </Form>
       </div>
     )
