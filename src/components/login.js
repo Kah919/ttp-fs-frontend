@@ -1,11 +1,14 @@
 import React, { Component} from "react";
 import {Form, Button} from 'react-bootstrap';
-
+import Register from "./register";
+import Portfolio from "./portfolio";
+import { Link, Redirect} from "react-router-dom";
 
 class Login extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    redirect: false
   }
 
   user_input = event => {
@@ -40,10 +43,16 @@ class Login extends Component {
               alert("No existing user")
             }
         })
+        .then(this.setState({
+          redirect: true
+        }))
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state.redirect)
+    if(this.state.redirect) {
+      return <Redirect to="/portfolio" />
+    }
     return(
       <div className="login_container">
         <h1 className="header"> Sign In</h1>
@@ -59,6 +68,9 @@ class Login extends Component {
           <Button variant="primary" type="submit" onClick={this.loginFetch}> Submit </Button>
 
         </Form>
+
+        <div className="redirect_link"><Link to="/register">Don't have an account?</Link></div>
+
       </div>
     )
   }

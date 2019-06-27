@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import {Form, Button} from 'react-bootstrap';
-
+import { Link, Redirect} from "react-router-dom";
+import Login from "./login";
 
 class Register extends Component {
   state = {
     name: "",
     email: "",
-    password: ""
+    password: "",
+    redirect: false
   }
 
   user_input = event => {
@@ -34,7 +36,6 @@ class Register extends Component {
       })
     })
       .then(r => r.json())
-      .then(console.log)
       .catch(err => console.log(err))
   }
 
@@ -58,6 +59,9 @@ class Register extends Component {
 
           <Button variant="primary" type="submit" onClick={this.signupFetch}> Submit </Button>
         </Form>
+
+        <div className="redirect_link"><Link to="/login" className="redirect_link">Already have an account?</Link></div>
+
       </div>
     )
   }
