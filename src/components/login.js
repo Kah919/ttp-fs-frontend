@@ -3,6 +3,10 @@ import {Form, Button} from 'react-bootstrap';
 import Register from "./register";
 import Portfolio from "./portfolio";
 import { Link, Redirect} from "react-router-dom";
+import { loginFetch } from "../Redux/actions";
+import { connect } from "react-redux";
+
+
 
 class Login extends Component {
   state = {
@@ -19,40 +23,21 @@ class Login extends Component {
 
   loginFetch = event => {
     event.preventDefault()
-    fetch("http://localhost:3000/api/v1/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            accepts: "application/json"
-          },
-          body: JSON.stringify({
-            user: {
-              email: this.state.email,
-              password: this.state.password
-            }
-          })
-        })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data)
-            if(data.user) {
-              localStorage.setItem("token", data.jwt);
-              console.log("data from action", data)
-              alert(`Welcome back ${data.user.name} 🥢`)
-            } else {
-              alert("No existing user")
-            }
-        })
-        .then(this.setState({
+
+    this.props.loginFetch(this.state);
+
+    if(localStorage.token) {
+        this.setState({
           redirect: true
-        }))
+        })
+    }
   }
 
   render() {
-    console.log(this.state.redirect)
-    if(this.state.redirect) {
+    if(localStorage.token) {
       return <Redirect to="/portfolio" />
     }
+
     return(
       <div className="login_container">
         <h1 className="header"> Sign In</h1>
@@ -76,4 +61,17 @@ class Login extends Component {
   }
 }
 
-export default Login
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = (dispatch) => { // mapDispatchToProps sends info, arg of dispatch
+  console.log("this is from dispatch", dispatch)
+  return { // returns and object usually name of what you want to return as a key
+    loginFetch: (loginInfo) => dispatch(loginFetch(loginInfo)), // dispatch the imported data ususally same as key before
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
