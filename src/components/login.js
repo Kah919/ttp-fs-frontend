@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 import {Form, Button} from 'react-bootstrap';
-import Register from "./register";
-import Portfolio from "./portfolio";
+// import Register from "./register";
+// import Portfolio from "./portfolio";
 import { Link, Redirect} from "react-router-dom";
 import { loginFetch } from "../Redux/actions";
 import { connect } from "react-redux";

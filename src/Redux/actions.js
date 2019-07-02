@@ -12,6 +12,20 @@ export const invalid = () => {
   }
 }
 
+export const purchased = (obj) => {
+  return {
+    type: "PURCHASED",
+    payload: obj
+  }
+}
+
+export const balance = (obj) => {
+  return {
+    type: "BALANCE",
+    payload: obj
+  }
+}
+
 export const loginFetch = userObj => {
   return (dispatch) => {
         fetch("http://localhost:3000/api/v1/login", {
@@ -55,5 +69,26 @@ export const usernameFetch = userObj => {
         dispatch(logged(data.user))
       })
     }
+  }
+}
+
+
+export const newBalanceFetch = (id, newBalance) => {
+  return(dispatch) => {
+    fetch(`http://localhost:3000/api/v1/users/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        balance: newBalance
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("this is the data from newBalance fetch in redux", data)
+      dispatch(balance(data))
+    })
   }
 }

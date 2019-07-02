@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {Form, Button} from 'react-bootstrap';
-import { Link, Redirect} from "react-router-dom";
-import Login from "./login";
+import { Link} from "react-router-dom";
 
 class Register extends Component {
   state = {

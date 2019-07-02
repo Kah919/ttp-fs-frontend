@@ -28,3 +28,47 @@
 h1 {
   color: white;
 }
+
+/* Start of Porfolio */
+.portfolio_split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  text-align: center;
+}
+
+.buying {
+  border-left: 1px solid white;
+  margin-top: 20%;
+}
+
+.buying_form {
+  width: 40%;
+  margin: 0 auto;
+  padding: 50px;
+}
+
+.buying_form input {
+  margin-top: 10%;
+}
+
+.owned {
+  /* border-right: 1px solid white; */
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+/* End of Porfolio */
+
+.stock_row_container {
+  margin-top: 25%;
+}
+.stock_row {
+  display: flex;
+  margin-top: 5%;
+  border-bottom: 1px solid white;
+}
+
+.stock_row h3 {
+  margin: 5%;
+}

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Login from './components/login';
 import Register from './components/register';
 import Portfolio from './components/portfolio';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { usernameFetch } from "./Redux/actions";
-import { Provider, connect } from "react-redux";
+import { connect } from "react-redux";
 
 class App extends Component {
 
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) =>{
-  console.log("from app", state)
+  // console.log("from app", state)
   return{
     user: state.name
   }
