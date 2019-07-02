@@ -30,9 +30,13 @@ h1 {
 }
 
 /* Start of Porfolio */
+.wrapper {
+  grid-template-rows: 1fr 24fr;
+}
+
 .portfolio_split {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 4fr;
   height: 100vh;
   text-align: center;
 }
@@ -43,9 +47,14 @@ h1 {
 }
 
 .buying_form {
-  width: 40%;
+  width: 70%;
   margin: 0 auto;
   padding: 50px;
+  margin-left: 36%;
+}
+
+.balance {
+  margin-left: 40%;
 }
 
 .buying_form input {
@@ -53,22 +62,38 @@ h1 {
 }
 
 .owned {
-  /* border-right: 1px solid white; */
-  margin: 0 auto;
   margin-top: 5%;
 }
 
 /* End of Porfolio */
 
 .stock_row_container {
-  margin-top: 25%;
+  margin-top: 5%;
 }
 .stock_row {
   display: flex;
-  margin-top: 5%;
   border-bottom: 1px solid white;
 }
 
 .stock_row h3 {
-  margin: 5%;
+  width: 225px;
+  padding: 20px;
 }
+
+/* Start of navbar */
+.navbar_container {
+  color: white;
+  list-style: none;
+  display: flex;
+}
+
+.navbar_container li {
+  padding: 20px;
+  font-size: 14px;
+}
+
+.nav {
+  float: right;
+  height: 500px;
+}
+/* End of navbar */

@@ -37,7 +37,8 @@ class Purchase extends Component {
           transaction: {
             user_id: this.props.user.id,
             stock_id: stock_id,
-            num_share: this.state.quantity
+            num_share: this.state.quantity,
+            price: price
           }
         })
       })
@@ -50,7 +51,7 @@ class Purchase extends Component {
     if(purchased) {
       console.log("this is now being purchased")
       let newBalance = this.props.user.balance - cost
-      newBalance = Math.round(newBalance * 10) / 100;
+      newBalance = Math.round(newBalance * 100) / 100;
       this.props.newBalanceFetch(this.props.user.id, newBalance)
     }
   }
@@ -112,7 +113,7 @@ class Purchase extends Component {
   render() {
     return(
       <div>
-        <h1>{`Cash - $${this.props.user.balance}`}</h1>
+        <h1 className="balance">{`Cash - $${this.props.user.balance}`}</h1>
 
         <div className="buying_form">
           <div className="form-group">

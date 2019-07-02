@@ -23,14 +23,9 @@ class Owned extends Component {
   render() {
     return(
       <div>
-        <h1>{`Portfolio ($${this.props.user.balance})`}</h1>
-
         <div className="owned_stock_container">
           {this.ownedStocks()}
-
         </div>
-
-
       </div>
     )
   }
